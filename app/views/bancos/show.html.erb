@@ -1,0 +1,36 @@
+<% content_for :titulo, "Detalle Banco" %>
+
+<body class="pantalla_pared"></body>
+
+<h2>Banco</h2>
+<table>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Nombre:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.nombre %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Numero Cuenta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.numero_cuenta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Tipo de cuenta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.tipo_cuenta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Titular:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.titular %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Cedula:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.cedula %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Correo:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.correo %></h4></td>
+  </tr>
+</table>
+
+<h3>
+<%= link_to 'Editar', edit_banco_path(@banco) %> |
+<%= link_to 'Regresar', bancos_path %>
+</h3>

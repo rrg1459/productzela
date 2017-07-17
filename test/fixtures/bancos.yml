@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_creado: 2017-05-25
+  nombre: MyText
+  tipo_cuenta: MyText
+  numero_cuenta: MyString
+  titular: MyText
+  cedula: MyString
+  correo: MyString
+
+two:
+  f_creado: 2017-05-25
+  nombre: MyText
+  tipo_cuenta: MyText
+  numero_cuenta: MyString
+  titular: MyText
+  cedula: MyString
+  correo: MyString

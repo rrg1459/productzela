@@ -1,0 +1,40 @@
+<% content_for :titulo, "Listado Entregadas" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+<h1>Compras Entregadas</h1>
+</center>
+
+<!table style="width:80%" border="1">
+
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= "Celular" %></h3></th>
+      <th><h3><%= "Verificada" %></h3></th>
+      <th><h3><%= "Entregada" %></h3></th>
+      <th><h3><%= "Articulos" %></h3></th>
+      <th style="text-align: right"><h3>&nbsp;&nbsp;<%= "Total" %></h3></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compras.each do |compra| %>
+      <tr height="50">
+          <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= "(#{compra.celular[0,4]})#{compra.celular[4,3]}-#{compra.celular[7,4]}" %></h4></td>
+          <td><h4><%= compra.f_verificada.strftime("%d de %b de %Y") %></h4></td>
+          <td><h4><%= compra.f_entregada.strftime("%d de %b de %Y") %></h4></td>
+          <td style="text-align: center"><h4><%= compra.cantidad_articulos %></h4></td>
+          <td style="text-align: right" ><h4><%= number_to_currency(compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h4></td>
+          <td style="text-align: center" ><%= button_to 'Detalle de Compra', detalle_compra_path(compra), :class => "btn-sm btn-info", method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Compras por Verificar', listado_compras_por_verificar_path %></h3>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Compras para Entregar', listado_compras_para_entregar_path %></h3>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to 'Listado de todas las Compras', listado_todas_las_compras_path %><br><br></h3>
+
+

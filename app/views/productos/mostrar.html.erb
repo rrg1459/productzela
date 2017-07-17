@@ -1,0 +1,37 @@
+<% content_for :titulo, "Mostrar productos" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+<h1>Productos Disponibles</h1>
+</center>
+
+<!table style="width:80%" border="1">
+
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= sortable "nombre" %></h3></th>
+      <th><h3><%= sortable "descripcion" %></h3></th>
+      <th style="text-align: center" ><h3><%= sortable "cantidad_existencia", "Existencias" %></h3></th>
+      <th style="text-align: right" ><h3><%= sortable "precio" %></h3></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <% cantidad = producto.cantidad_existencia %> 
+      <% if cantidad > 9 %>
+         <% cantidad = '+9' %>  
+      <% end %>
+      <tr height="50">
+          <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= producto.nombre %></h4></td>
+          <td><h4><%= producto.descripcion %></h4></td>
+          <td style="text-align: center" ><h4><%= cantidad %></h4></td>
+          <td style="text-align: right" ><h4><%= number_to_currency(producto.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h4></td>
+          <td style="text-align: center" ><%= button_to 'Subir al Carrito', ajustar_path(producto), :class => "btn-sm btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br><br><br>

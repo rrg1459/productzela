@@ -1,0 +1,12 @@
+<% content_for :titulo, "Nuevo Banco" %>
+
+<body class="pantalla_pared"></body>
+
+<h1>Nuevo Banco</h1>
+
+<%= render 'form', banco: @banco %>
+
+<br>
+<h3>
+<%= link_to 'Regresar', bancos_path %>
+</h3>

@@ -1,0 +1,35 @@
+<% content_for :titulo, "Detalle Usuario" %>
+
+<body class="pantalla_usuario"></body>
+
+<h1>Usuario</h1>
+<table>
+  <h4>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Nombre:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @usuario.nombre %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Celular:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= "(#{params[:area]})-#{params[:numero]}" %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Telefono:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @usuario.telefono %></h4></td>
+  </tr>  
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Ubicacion:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @usuario.ubicacion %></h4></td>
+  </tr>
+   <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Correo:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @usuario.correo %></h4></td>
+  </tr>
+  </h4>
+</table>
+<h3>
+<%= link_to 'Editar Usuario', edit_usuario_path(@usuario) %>
+<% if @usuario.rol == 'opera' && session[:rol_usuario] == 'admin' %>
+      | <%= link_to 'Hacer administrador', otorgar_url(@usuario), method: :post   %> 
+<% end %>
+</h3>

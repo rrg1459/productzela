@@ -1,0 +1,53 @@
+<% content_for :titulo, "Detalle Compra" %>
+
+<div class="header">
+  <h1><center>Compra Detallada</center></h1>
+</div>
+
+<div class="row">
+
+<div class="col-3 menu">
+  <ul>
+    <li><h2><center><%= number_to_currency(@compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></center></h2></li>
+    <li><h4>
+       <%= @compra.tipo_transaccion %> desde el Banco
+       <%= @compra.nombre_banco_origen %>, hacia el 
+       <%= @banco.nombre %> con numero de confirmacion 
+       <%= @compra.numero_transaccion %><br>
+       <% if @compra.f_transaccion %>
+         <%= @compra.f_transaccion.strftime("del %d de %b de %Y") %>    
+       <% else %>
+         <%= @compra.f_transaccion %>    
+       <% end %>
+    </h4></li>
+    <% if @compra.f_verificada %>
+         <li><h5>Verificada<%= @compra.f_verificada.strftime(", el %d de %b de %Y") %></h5></li>
+    <% end %>
+    <% if @compra.f_entregada %>
+         <li><h5>
+            Entregada<%= @compra.f_entregada.strftime(", el %d de %b de %Y") %><br>
+            por: <%= @compra.entregado_por %><br>
+            Comentarios: <%= @compra.comentarios %>
+         </h5></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-9">
+  <h1><center>Articulos</center></h1>
+  <table style="width:80%" >
+    <tbody>
+      <% @carritos.each do |carrito| %>
+        <tr height="50">
+          <td><h3><%= carrito.nombre %></h3></td>
+          <td><h3><%= carrito.descripcion %></h3></td>
+          <td style="text-align: right"><h3><%= number_to_currency(carrito.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h3></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if @compra.f_verificada == nil and @compra.celular == @celular_sesion %>
+  <h3><%= link_to 'Modificar Compra', continuar_compra_path(@compra) %></h3> 
+<% end %>

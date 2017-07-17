@@ -1,0 +1,12 @@
+<% content_for :titulo, "Editando Banco" %>
+
+<body class="pantalla_pared"></body>
+
+<h1>Editando Banco</h1>
+
+<%= render 'forme', banco: @banco %>
+
+<h3>
+<%= link_to 'Mostrar', @banco %> |
+<%= link_to 'Regresar', bancos_path %>
+</h3>

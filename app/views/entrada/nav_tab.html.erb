@@ -1,0 +1,53 @@
+<% content_for :titulo, "Nav Tab" %>
+<h3>
+<class="notice"><%= notice %></p>
+</h3>
+<body class="pantalla_market"></body>
+
+
+<%= navbar fixed: :top do %>
+
+  <%= navbar_header brand: 'ProducVela', brand_link: '/home' %>
+  <%= navbar_collapse do %>
+    <%= navbar_group class: 'foo', id: 'menu' do %>
+      <%= navbar_text 'Selecciona una opcion:' %>
+      <%= navbar_item "Home", '/' %>
+      <%= navbar_item "About Us", '/about-us' %>
+      <%= navbar_item '/contact' do %>
+        <span class="glyphicon glyphicon-hand-right"></span>
+        Contact Us!
+      <% end %>
+      <%= navbar_dropdown "Stuff" do %>
+        <%= navbar_dropdown_header 'Great stuff!' %>
+        <%= navbar_item "One", '/one' %>
+        <%= navbar_item "Two", '/two' %>
+        <%= navbar_item "Three", '/three' %>
+        <% if true # check if user is admin, maybe like "if current_user.try(:admin?)" %>
+          <%= navbar_dropdown_divider %>
+          <%= navbar_item "Teblero del Administrador", '/admin' %>
+          <%= navbar_item "Users", '/admin/users' %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= navbar_group align: 'right' do %>
+
+      <% if true # check if user is logged in, maybe like "if current_user.present?" %>
+        <% nombre = usuario_actual.nombre.split(" ") %>
+        <%= navbar_item "#{nombre[0]}", "/usuarios/#{(session[:celular_usuario])}" %>
+        <%= navbar_item "Cerrar Sesion", '/cerrar' %>
+      <% else %>
+        <%= navbar_item "Entrar", '/entrar' %>
+        <%= navbar_item "Nuevo Usuario", '/usuarios/new' %>
+      <% end %>
+    <% end %>
+
+    <%= navbar_group align: 'right' do %>
+        <%= navbar_item "#{@cantidad} articulos en tu carrito", '/carritos' %> 
+    <% end %>
+
+  <% end %>
+<% end %>
+
+
+

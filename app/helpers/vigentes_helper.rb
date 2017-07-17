@@ -1,0 +1,2 @@
+module VigentesHelper
+end

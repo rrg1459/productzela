@@ -1,0 +1,47 @@
+<p>
+  <strong>Abierto:</strong>
+  <%= @carrito.abierto %>
+</p>
+
+<p>
+  <strong>Celular:</strong>
+  <%= @carrito.celular %>
+</p>
+
+<p>
+  <strong>Producto:</strong>
+  <%= @carrito.producto_id %>
+</p>
+
+<p>
+  <strong>Compra:</strong>
+  <%= @carrito.compra_id %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @carrito.cantidad %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @carrito.precio %>
+</p>
+
+<p>
+  <strong>F creado:</strong>
+  <%= @carrito.f_creado %>
+</p>
+
+<p>
+  <strong>F anulado:</strong>
+  <%= @carrito.f_anulado %>
+</p>
+
+<p>
+  <strong>F eliminado:</strong>
+  <%= @carrito.f_eliminado %>
+</p>
+
+<%= link_to 'Edit', edit_carrito_path(@carrito) %> |
+<%= link_to 'Back', carritos_path %>

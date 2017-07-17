@@ -1,0 +1,88 @@
+<% content_for :titulo, "Compra Entregada" %>
+
+<!body class="pantalla_construccion"></body>
+
+<%= form_for :compra, url: registrar_compra_path(compra) do |f| %>
+
+  <% if compra.errors.any? %>
+    <div id="error_explanation">
+      <h3>Errores en este formulario</h3>
+    
+      <ul>
+      <% compra.errors.each do |atributo, message| %>
+        <li><h4><%= message %></h4></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Banco Origen:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @compra.nombre_banco_origen %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Banco Destino:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.nombre %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Tipo de cuenta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @banco.tipo_cuenta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Tipo de Transaccion:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @compra.tipo_transaccion %></h4></td>
+  </tr>
+  <tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Fecha de Transaccion:</strong></h4></td>
+    <td><h3>&nbsp;&nbsp;<strong><%= @compra.f_transaccion.strftime("%d %b %Y") %></strong></h3></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Numero de Confirmacion:</strong></h4></td>
+    <td><h3>&nbsp;&nbsp;<strong><%= @compra.numero_transaccion %></strong></h3></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Total de la Compra:</strong></h4></td>
+    <td><h3>&nbsp;&nbsp;<strong><%= number_to_currency(@compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></strong></h3></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Cantidad de Articulos:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<strong><%= @compra.cantidad_articulos %></strong></h4></td>
+  </tr>
+</table>
+
+  <h3><center>Articulos en el Carrito</center></h3>
+  <table style="width:80%" >
+    <tbody>
+      <% @carritos.each do |carrito| %>
+        <tr height="50">
+          <td><h4><%= carrito.nombre %></h4></td>
+          <td><h4><%= carrito.descripcion %></h4></td>
+          <td style="text-align: right"><h4><%= number_to_currency(carrito.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h4></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <div style="width: 243px;">
+    <strong><%= "Entregada por:" %></strong><br>
+    <%= f.text_field :entregado_por %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <strong><%= "Comentarios" %></strong><br>
+    <%= f.text_area :comentarios,  placeholder: "Escriba su comentario aqui\n(300 caracteres)", class: "form-control input-ml" %>
+  </div>
+  <br><br>
+
+  <div style="width: 243px;">
+     <%= button_to 'Registrar Compra', registrar_compra_path(@compra), :class => "btn-sm btn-primary", method: :post %>
+  </div>
+  <br>
+<% end %>
+
+

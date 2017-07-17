@@ -1,0 +1,46 @@
+<div class="header">
+  <h1>Compra Detallada</h1>
+</div>
+
+<div class="row">
+
+<div class="col-3 menu">
+  <ul>
+    <li><h2><center><%= number_to_currency(@compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></center></h2></li>
+    <li>
+    <h4>
+       <%= @compra.tipo_transaccion %> en el  
+       <%= @banco.nombre %>, numero de confirmacion 
+       <%= @compra.numero_transaccion %> con fecha de
+       <%= @compra.f_transaccion %>    
+    </h4>
+    </li>
+    <li><h4>Verificada el <%= @compra.f_verificada %></h4></li>
+    <li><h4>Entregada el <%= @compra.f_entregada %></h4></li>
+  </ul>
+</div>
+
+<div class="col-9">
+  <h1>Articulos</h1>
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+      <th><h3>Nombre</h3></th>
+      <th style="text-align: right"><h3>Precio</h3></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carritos.each do |carrito| %>
+      <tr height="50">
+        <td><h4><%= carrito.nombre %></h4></td>
+        <td style="text-align: right"><h4><%= number_to_currency(carrito.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h4></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+  <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+  <p>Resize the browser window to see how the content respond to the resizing.</p>
+</div>

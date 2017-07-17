@@ -1,0 +1,108 @@
+<%= form_for(compra) do |f| %>
+
+  <% if compra.errors.any? %>
+    <div id="error_explanation">
+      <h2>&nbsp;&nbsp;Errores en este formulario</h2>
+    
+      <ul>
+      <% compra.errors.each do |atributo, message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+    <tr>
+      <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Total de la Compra:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= number_to_currency(@compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h4></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cantidad de Articulos:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @compra.cantidad_articulos %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Banco Destino:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.nombre %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo de Cuenta:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.tipo_cuenta %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Numero de Cuenta:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.numero_cuenta %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Titular de la Cuenta:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.titular %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fecha de Compra:</strong></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= @compra.f_creada %></td>
+    </tr>
+  </table>
+
+<div class="col-3">
+    <strong><%= "Fecha Transaccion Bancaria" %></strong><br>
+    <%= f.date_select :f_transaccion, order: [:day,:month,  :year], start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
+    <br><br>
+    <strong><%= "Banco Origen" %></strong><br>
+    <% grupo = [[
+      "100% Banco",
+      "Activo",
+      "Agrícola de Venezuela",
+      "Bancamiga",
+      "Bancaribe",
+      "Bancoex",
+      "Bancrecer",
+      "Banesco",
+      "Banfanb",
+      "Bangente",
+      "Banplus",
+      "BBVA Provincial",
+      "Bicentenario",
+      "Caroní",
+      "Citibank",
+      "Consolidado",
+      "Construccion",
+      "de Exportación y Comercio",
+      "de Venezuela",
+      "DEL SUR",
+      "del Tesoro",
+      "Exterior",
+      "Federal",
+      "Fondo Común",
+      "Internacional de Desarrollo",
+      "Mercantil",
+      "Mi Banco",
+      "Nacional de Crédito",
+      "Novo Banco",
+      "Occidental de Descuento BOD",
+      "Plaza",
+      "Sofitasa",
+      "Union",
+      "Venezolano de Crédito",
+      "...otro banco..."
+      ]] %>
+    <%= f.select :nombre_banco_origen, grouped_options_for_select(grupo, @compra.nombre_banco_origen, divider: 'Seleccione el Banco') %>
+    <br><br>
+    <strong><%= "Numero de Confirmacion" %></strong><br>
+    <%= f.text_field :numero_transaccion %>
+    <br><br>
+    <strong><%= "Tipo de Transaccion" %></strong><br>
+    <% grupo = [[
+      'Deposito',
+      'Transferencia'
+      ]] %>
+    <%= f.select :tipo_transaccion, grouped_options_for_select(grupo, @compra.tipo_transaccion, divider: 'Seleccione el Tipo') %>
+    <br><br>
+    <strong><%= "Comentarios" %></strong><br>
+    <%= f.text_area :comentarios,  placeholder: "Escriba su comentario aqui\n(300 caracteres)", class: "form-control input-ml" %>
+    <br><br>
+    <%= f.submit :Guardar, class: "btn-success form-control input-ml" %>
+    <br><h4>
+    <%= link_to 'Regresar a las Compras Pendientes', listado_compras_pendientes_path %>
+    </h4>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "entrada";
+@import "usuarios";
+@import "hall";
+@import "pared";
+@import "construccion";
+@import "compras";
+@import "market";
+
+th .current {
+  padding-right: 18px;
+  background-size:initial;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+th .ini { 
+  background-image: url(asset-path('scroll.png')); 
+}
+
+th .asc { 
+  background-image: url(asset-path('up.png')); 
+}
+
+th .desc { 
+  background-image: url(asset-path('down.png')); 
+}
+
+carrito {
+}
+
+.car { 
+  background-repeat: no-repeat;
+  background-size:auto;
+  background-position: left;
+  background-image: url(asset-path('carrito.png')); 
+}

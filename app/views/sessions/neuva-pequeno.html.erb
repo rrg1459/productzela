@@ -1,0 +1,26 @@
+<p class="notice"><%= notice %></p>
+<br>
+
+
+<h2><center>Iniciar Sesion</center></h2>
+
+<%= form_tag '/entrar' do %>
+	<div align="right" class="col-xs-6">
+		<select id="area" name="area" 	class="form-control input-sm" 	style="width: 85px;">
+			<optgroup label="Movilnet"><option value="0416">0416</option><option value="0426">0426</option></optgroup>
+			<optgroup label="Movistar"><option value="0414">0414</option><option value="0424">0424</option></optgroup>
+			<optgroup label="Digitel"> <option value="0412">0412</option></optgroup>
+		</select>
+	</div>
+   <input type="number" name="numero" class="form-control input-sm" placeholder="telefono" align="left" style="width: 100px;" min=999999 max=9999999 required><br>
+   <center>
+
+   <input type="password" name="contrasena" class="form-control input-sm" style="width: 200px;" placeholder="contrasena" required><br>
+   <button class="btn-sm btn-success btn-block" style="width: 200px;">Enviar</button>
+</center>
+
+<% end %>
+
+
+
+<!--

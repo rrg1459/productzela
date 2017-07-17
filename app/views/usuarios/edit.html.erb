@@ -1,0 +1,12 @@
+<% content_for :titulo, "Editando Usuario" %>
+
+<body class="pantalla_usuario"></body>
+
+<h1>Editando Usuario</h1>
+
+<%= render 'forme', usuario: @usuario %>
+
+<h4>
+<%= link_to 'Mostrar', @usuario %> |
+<%= link_to 'Regresar', usuarios_path %>
+</h4>

@@ -1,0 +1,22 @@
+<% content_for :titulo, "Quincalla" %>
+
+<body class="pantalla_productos"></body>
+
+<h1>Compras por Internet</h1>
+	<br>
+	<h3><%= link_to 'Ver productos', comprar_url(session[:celular_usuario]) %></h3>
+	<br>
+	<h3><%= link_to 'Ver carrito', Usuario.find(session[:celular_usuario]) %></h3>
+	<br>
+	<h3><%= link_to 'Hacer compras', Usuario.find(session[:celular_usuario]) %></h3>
+	<% if session[:rol_usuario] == 'admin' %>
+		<br>
+		<h3><%= link_to 'Procesos Administrativos', '/entrada/procesos' %></h3></br>
+	<% end %>
+
+<br>http --- 
+<h2><%= link_to 'Simple Authentication with_bcrypt', 'https://gist.github.com/thebucknerlife/10090014' %></br>
+<br>http ---
+<%= link_to 'Bank list - formularios anidados en ruby on rails', 'http://blog.desafiolatam.com/formularios-anidados-en-ruby-on-rails/' %></h2></br>
+<!--
+

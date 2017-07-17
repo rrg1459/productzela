@@ -1,0 +1,32 @@
+body.pantalla_entrada {
+background:url(asset-path('safari1.jpg')) 0px 0px;
+background-size:cover; 
+background-size:100% 100%;
+background-repeat:no-repeat;
+background-attachment:fixed;
+height:100%;
+}
+
+
+a:link {
+    color: blue;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: red;
+}
+
+
+
+

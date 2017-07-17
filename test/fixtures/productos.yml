@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  f_creado: 2017-05-25
+  f_eliminado: 2017-05-25
+  disponible: false
+  cantidad_por_venta: 1
+  cantidad_existencia: 1
+  nombre: MyText
+  descripcion: MyText
+  precio: 1.5
+
+two:
+  f_creado: 2017-05-25
+  f_eliminado: 2017-05-25
+  disponible: false
+  cantidad_por_venta: 1
+  cantidad_existencia: 1
+  nombre: MyText
+  descripcion: MyText
+  precio: 1.5

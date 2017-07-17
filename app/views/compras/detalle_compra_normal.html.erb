@@ -1,0 +1,63 @@
+<% content_for :titulo, "Detalle Compra" %>
+
+<!body class="pantalla_construccion"></body>
+
+<h1>Detalle Compra</h1>
+
+  <table>
+    <tr>
+      <td><h3>&nbsp;<strong>Total de la Compra:</strong></h3></td>
+      <td><h3>&nbsp;<%= number_to_currency(@compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h3></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Cantidad de Articulos:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.cantidad_articulos %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Banco:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @banco.nombre %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Tipo de cuenta:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @banco.tipo_cuenta %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Numero de Cuenta:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @banco.numero_cuenta %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Titular de la Cuenta:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @banco.titular %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Fecha de Compra:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.f_creada %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Fecha Transaccion Bancaria:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.f_transaccion %></h4></td>
+    </tr>
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Transaccion en el mismo Banco?:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.dot_mismo_banco %></h4></td>
+    </tr>
+
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Nombre del Banco de la Transaccion:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.nombre_banco_origen %></h4></td>
+    </tr>
+
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>Numero de la Transaccion Bancaria:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.numero_transaccion %></h4></td>
+    </tr>
+
+    <tr>
+      <td><h4>&nbsp;&nbsp;<strong>La Transaccion fue un:</strong></h4></td>
+      <td><h4>&nbsp;&nbsp;<%= @compra.dep_o_trans_dot %></h4></td>
+    </tr>
+  </table>
+
+  <% if @compra.f_verificada == nil %>
+    <h3><%= link_to 'Modificar Compra', continuar_compra_path(@compra) %></h3> 
+  <% end %>

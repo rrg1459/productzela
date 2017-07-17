@@ -1,0 +1,46 @@
+<%= form_for(producto) do |f| %>
+
+  <% if producto.errors.any? %>
+    <div id="error_explanation">
+      <h2>Errores en este formulario</h2>
+    
+      <ul>
+      <% producto.errors.each do |atributo, message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :nombre, placeholder: "Nombre", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :descripcion, placeholder: "Descripcion", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :precio, placeholder: "Precio en Bs", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :cantidad_existencia, placeholder: "Cantidad", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :disponible %>
+    <%= f.check_box :disponible %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.submit :Guardar, class: "btn-success form-control input-ml" %>
+  </div>
+<% end %>
+

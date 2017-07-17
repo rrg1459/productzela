@@ -1,0 +1,25 @@
+<% content_for :titulo, "Entrada" %>
+
+<body class="pantalla_entrada"></body>
+
+<br>
+
+<h1><center>Iniciar Sesion</center></h1>
+<br>
+<%= form_tag '/entrar' do %>
+<center>
+  <div class="input-group">
+    <select name="area"   class="form-control input-lg"   style="width: 95px;">
+      <optgroup label="Movilnet"><option value="0416">0416</option><option value="0426">0426</option></optgroup>
+      <optgroup label="Movistar"><option value="0414">0414</option><option value="0424">0424</option>  </optgroup>
+      <optgroup label="Digitel"> <option value="0412">0412</option></optgroup>
+    </select>
+    <%= number_field_tag :numero, ":numero", :min => 999999, :max => 9999999, :placeholder => "numero", class: "form-control input-lg", style: "width: 148px;", :required => "required" %>
+  </div>
+  <br>
+  <input type="password" name="contrasena" class="form-control input-lg" style="width: 242px;" placeholder="contrasena" required><br>
+  <button class="btn-lg btn-success btn-block" style="width: 245px;">Enviar</button>
+</center>
+<% end %>
+
+<!--

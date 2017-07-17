@@ -1,0 +1,26 @@
+<% content_for :titulo, "Administradores" %>
+
+<br>
+<center>
+<h1>Administradores</h1>
+</center>
+<br>
+<table style="width:80%" >
+  <thead>
+    <tr>
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;Nombre</h3></th>
+      <th><h3>Celular</h3></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+       <tr>
+     	   <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= usuario.nombre %></h4></td>
+               <% mostrar = "(" + usuario.celular.to_s[0,4] + ")" + usuario.celular.to_s[4,3] + "-" + usuario.celular.to_s[7,9] %>
+         <td><h4><%= mostrar %></h4></td>
+         <td style="text-align: center"><%= button_to 'Revocar perfil administrador', revocar_url(usuario), method: :post, :class => "btn-sm btn-danger" %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>

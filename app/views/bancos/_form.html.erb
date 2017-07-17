@@ -1,0 +1,50 @@
+<%= form_for(banco) do |f| %>
+
+  <% if banco.errors.any? %>
+    <div id="error_explanation">
+      <h2>Errores en este formulario</h2>
+    
+      <ul>
+      <% banco.errors.each do |atributo, message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :nombre,        placeholder: "Nombre", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :numero_cuenta, placeholder: "Numero de Cuenta", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :tipo_cuenta,    placeholder: "Tipo de Cuenta", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :titular,        placeholder: "Titular", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :cedula,          placeholder: "Cedula de Identidad", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :correo,          placeholder: "Correo", class: "form-control input-ml" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.submit :Guardar, class: "btn-success form-control input-ml" %>
+  </div>
+<% end %>
+

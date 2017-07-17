@@ -1,0 +1,33 @@
+<% content_for :titulo, "Detalle Producto" %>
+
+<body class="pantalla_pared"></body>
+
+<h2>Producto</h2>
+<table>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Nombre:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @producto.nombre %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Cantidad por venta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;  <%= @producto.cantidad_por_venta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Cantidad en existencia:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @producto.cantidad_existencia %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Descripcion:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= @producto.descripcion %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;<strong>Precio:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;<%= number_to_currency(@producto.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h4></td>
+  </tr>
+</table>
+<h3>
+<%= link_to 'Editar', edit_producto_path(@producto) %> |
+<%= link_to 'Regresar', productos_path %>
+</h3>
+
+

@@ -1,0 +1,63 @@
+body.pantalla_usuario {
+background:url(asset-path('hamabe1.jpg')) 0px 0px;
+background-size:cover; 
+background-repeat:no-repeat;
+background-attachment:fixed;
+height:100%;
+}
+
+	
+#areau {
+	position:absolute;
+	top: 60px;
+	left: 7px;
+}
+
+#numerot {
+	position:absolute;
+	top: 120px;
+	left: 130px;
+}
+
+#nombre {
+	position:absolute;
+	top: 180px;
+	left: 14px;
+}
+
+#contrasena {
+	position:absolute;
+	top: 240px;
+	left: 14px;
+}
+
+#ubicacion {
+	position:absolute;
+	top: 300px;
+	left: 14px;
+}
+
+#correo {
+	position:absolute;
+	top: 360px;
+	left: 14px;
+}
+
+#gerencia {
+	position:absolute;
+	top: 420px;
+	left: 14px;
+}
+
+#telefono {
+	position:absolute;
+	top: 480px;
+	left: 14px;
+}
+
+#boton {
+	position:absolute;
+	top: 540px;
+	left: 14px;
+}
+

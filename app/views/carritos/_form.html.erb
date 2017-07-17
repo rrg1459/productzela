@@ -1,0 +1,62 @@
+<%= form_for(carrito) do |f| %>
+  <% if carrito.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carrito.errors.count, "error") %> prohibited this carrito from being saved:</h2>
+
+      <ul>
+      <% carrito.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :abierto %>
+    <%= f.check_box :abierto %>
+  </div>
+
+  <div class="field">
+    <%= f.label :celular %>
+    <%= f.text_field :celular %>
+  </div>
+
+  <div class="field">
+    <%= f.label :producto_id %>
+    <%= f.number_field :producto_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :compra_id %>
+    <%= f.number_field :compra_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cantidad %>
+    <%= f.number_field :cantidad %>
+  </div>
+
+  <div class="field">
+    <%= f.label :precio %>
+    <%= f.text_field :precio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_creado %>
+    <%= f.date_select :f_creado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_anulado %>
+    <%= f.date_select :f_anulado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_eliminado %>
+    <%= f.date_select :f_eliminado %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

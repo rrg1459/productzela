@@ -1,0 +1,13 @@
+<% content_for :titulo, "Editando Producto" %>
+
+<body class="pantalla_pared"></body>
+
+<h1>Editando Producto</h1>
+
+<%= render 'forme', producto: @producto %>
+
+<h3>
+<%= link_to 'Mostrar', @producto %> |
+<%= link_to 'Regresar', productos_path %>
+</h3>
+

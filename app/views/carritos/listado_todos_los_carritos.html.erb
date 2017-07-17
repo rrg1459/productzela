@@ -1,0 +1,44 @@
+<% content_for :titulo, "Listado Todos los carritos" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+<h2>Listado de todos los carritos</h2>
+</center>
+
+<!table style="width:80%" border="1">
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;Celular</h3></th>
+      <th><h3>Compra ID</h3></th>
+      <th><h3>Nombre</h3></th>
+      <th><h3>Cantidad</h3></th>
+      <th style="text-align: right"><h3>Precio</h3></th>
+      <th style="text-align: right"><h3>Creado</h3></th>
+      <th style="text-align: right"><h3>Eliminado</h3></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @carritos.each do |carrito| %>
+      <tr height="50">
+        <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= "(" + carrito.celular.to_s[0,4] + ")" + carrito.celular.to_s[4,3] + "-" + carrito.celular.to_s[7,9] %></h4></td>
+        <td style="text-align: center"><h4><%= carrito.compra_id %></h4></td>
+        <td><h4><%= carrito.nombre %></h4></td>
+        <td style="text-align: center"><h4><%= carrito.cantidad %></h4></td>
+        <td style="text-align: right"> <h4><%= number_to_currency(carrito.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h4></td>
+        <td style="text-align: right"> <h4><%= carrito.f_creado %></h4></td>
+        <td style="text-align: right"> <h4><%= carrito.f_eliminado %></h4></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!--
+@producto = Producto.find(carrito.producto_id)
+
+        <td align="right" ><!%= button_to 'Subir al Carrito', ajustar_path(producto), :class => "btn-sm btn-primary" %></td>
+Client.sum("orders_count")
+carrito.sum("precio")
+-->

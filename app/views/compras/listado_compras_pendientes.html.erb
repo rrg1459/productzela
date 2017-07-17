@@ -1,0 +1,38 @@
+<% content_for :titulo, "Listado Pendientes" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+<h1>Compras Pendientes</h1>
+</center>
+
+<!table style="width:80%" border="1">
+
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= "Creada" %></h3></th>
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= "Articulos" %></h3></th>
+      <th style="text-align: right"><h3>&nbsp;&nbsp;&nbsp;&nbsp;<%= "Total" %></h3></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compras.each do |compra| %>
+      <tr height="50">
+          <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= compra.f_creada.strftime("%d de %b de %Y") %></h4></td>
+          <td style="text-align: center"><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= compra.cantidad_articulos %></h4></td>
+          <td style="text-align: right" ><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= number_to_currency(compra.total_compra, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h4></td>
+          <td style="text-align: center" ><%= button_to 'Cancelar Compra',  cancelar_con_ID_path(compra), :class => "btn-sm btn-danger", method: :post, data: { confirm: "Esta usted seguro que quiere cancelar esta compra???" } %></td>
+          <td style="text-align: center" ><%= button_to 'Detalle de Compra', detalle_compra_path(compra), :class => "btn-sm btn-info", method: :get %></td>
+          <td style="text-align: center" ><%= button_to 'Continuar Compra', continuar_compra_path(compra), :class => "btn-sm btn-primary", method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;
+<%= link_to 'Compras realizadas', listado_compras_realizadas_path %>
+</h3>
+
+

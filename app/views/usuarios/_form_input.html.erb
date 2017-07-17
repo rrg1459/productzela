@@ -1,0 +1,54 @@
+<%= form_for(usuario) do |f| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2>Errores en este formulario</h2>
+    
+      <ul>
+      <% usuario.errors.each do |atributo, message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="areau" class="col-xs-6">
+    <select id="areau" name="area"   class="form-control input-lg"   style="width: 105px;">
+      <optgroup label="Movilnet"><option value="0416">0416</option><option value="0426">0426</option></optgroup>
+      <optgroup label="Movistar"><option value="0414">0414</option><option value="0424">0424</option></optgroup>
+      <optgroup label="Digitel"> <option value="0412">0412</option></optgroup>
+    </select>
+  </div>
+  <div id="numero">
+   <input type="number" name="numero" class="form-control input-lg" placeholder="telefono" style="width: 120px;" min=999999 max=9999999 required>
+</div>
+
+  <div id="nombre">
+   <input type="text" name="nombre" class="form-control input-lg" placeholder="nombre" style="width: 236px;">
+  </div>
+
+  <div id="contrasena">
+   <input type="text" name="contrasena" class="form-control input-lg" placeholder="contrasena" style="width: 236px;">
+  </div>
+
+
+  <div id="ubicacion">
+   <input type="text" name="ubicacion" class="form-control input-lg" placeholder="ubicacion" style="width: 236px;">
+  </div>
+
+  <div id="correo">
+   <input type="text" name="correo" class="form-control input-lg" placeholder="correo" style="width: 236px;">
+  </div>
+
+  <div id="gerencia">
+   <input type="text" name="gerencia" class="form-control input-lg" placeholder="gerencia" style="width: 236px;">
+  </div>
+
+  <div id="telefono">
+   <input type="text" name="telefono" class="form-control input-lg" placeholder="telefono local" style="width: 236px;">
+  </div>
+
+  <div id="boton">  
+   <button class="btn-lg btn-success btn-block" style="width: 236px;">Guardar</button>
+  </div>
+
+<% end %>

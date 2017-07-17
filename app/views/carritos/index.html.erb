@@ -1,0 +1,50 @@
+<% content_for :titulo, "En el carrito" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+  <h2>En el carrito</h2>
+  <h3>El saldo a pagar es de <strong><%= number_to_currency(@total_carrito, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></strong></h3>
+</center>
+
+<!table style="width:80%" border="1">
+<table style="width:80%" >
+  <thead>
+    <tr height="50">
+
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbsp;Nombre</h3></th>
+      <th style="text-align: right"><h3>Precio</h3></th>
+      <th style="text-align: right"><h3>Creado el</h3></th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carritos.each do |carrito| %>
+      <tr height="50">
+
+        <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= carrito.nombre %></h4></td>
+        <td style="text-align: right"><h4><%= number_to_currency(carrito.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."})%></h4></td>
+        <td style="text-align: right"><h4><%= carrito.f_creado.strftime("%d de %b de %Y") %></h4></td>
+        <td style="text-align: center"><%= button_to 'Quitar del Carrito', carrito, method: :delete, :class => "btn-sm btn-danger" %></td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+
+</table>
+
+<% if @total_carrito != 0 %>
+  <div class="col-3">
+    <%= button_to 'Iniciar Compra', new_compra_path, method: :get, :class => "btn-sm btn-primary" %> <br>
+  </div>
+<% end %>
+
+<!--
+@producto = Producto.find(carrito.producto_id)
+        <td align="right" ><!%= button_to 'Subir al Carrito', ajustar_path(producto), :class => "btn-sm btn-primary" %></td>
+Client.sum("orders_count")
+carrito.sum("precio")
+-->

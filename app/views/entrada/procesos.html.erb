@@ -1,0 +1,23 @@
+<% content_for :titulo, "Procesos Admnistrativos" %>
+
+<body class="pantalla_hall"></body>
+
+<h1>Procesos Administrativos</h1>
+
+<h3>
+<%= link_to 'Listado de Usuarios', controller: 'usuarios' %><br><br>
+<%= link_to 'Listado de Bancos', controller: 'bancos' %><br><br>
+<%= link_to 'Listado de Productos', controller: 'productos' %><br><br>
+<%= link_to 'Listado de Administradores', index_admin_url %><br><br>
+<%= link_to 'Listado de Compras por Verificar', listado_compras_por_verificar_path %><br><br>
+<%= link_to 'Listado de Compras para Entregar', listado_compras_para_entregar_path %><br><br>
+<%= link_to 'Listado de Compras Entregadas', listado_compras_entregadas_path %><br><br>
+<%= link_to 'Listado de todas las Compras', listado_todas_las_compras_path %><br><br>
+<%= link_to 'Listado de todos los Carritos', listado_todos_los_carritos_path %><br><br>
+<%= link_to 'Vigencia de Carritos de Compra', controller: 'vigentes' %><br>
+<%= link_to 'Nav Tab', nav_tab_path %><br><br>
+</h3>
+
+<!-- con politica de compras que pasen los dias de vigencia, se eliminan fisicamente de la tabla</p2>
+-->
+

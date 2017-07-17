@@ -1,0 +1,60 @@
+<%= form_for(usuario) do |f| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2>Errores en este formulario</h2>
+    
+      <ul>
+      <% usuario.errors.each do |atributo, message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <!% grupo = [['Movilnet',['0416','0426']],
+               ['Movistar',['0414','0424']],
+               ['Digitel', ['0412']]] %>
+  <!%= f.select :celular, grouped_options_for_select(grupo, params[:area]), class: "form-control input-ml", style: "width: 85px;" %>
+
+
+  <br>
+  <div class="input-group">
+    <select name="area", "params[area]"   class="form-control input-ml"   style="width: 85px;">
+      <optgroup label="Movilnet"><option value="0416">0416</option><option value="0426">0426</option></optgroup>
+      <optgroup label="Movistar"><option value="0414">0414</option><option value="0424">0424</option></optgroup>
+      <optgroup label="Digitel"> <option value="0412">0412</option></optgroup>
+    </select>
+    <%= number_field_tag :numero, params[:numero], :min => 999999, :max => 9999999, :placeholder => "numero", class: "form-control input-ml", style: "width: 158px;", :required => "required" %>
+  </div>
+  <br>
+
+  <div style="width: 243px;">
+    <%= f.text_field :nombre, placeholder: "Nombre", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :contrasena, placeholder: "Contrasena", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :ubicacion, placeholder: "Ubicacion", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :correo, placeholder: "Correo", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :gerencia, placeholder: "Gerencia", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.text_field :telefono, placeholder: "Telefono local", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.submit :Guardar, class: "btn-success form-control input-ml" %>
+  </div>
+  <br>
+<% end %>

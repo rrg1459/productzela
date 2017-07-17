@@ -1,0 +1,23 @@
+<%= form_for(vigente) do |f| %>
+  <% if vigente.errors.any? %>
+        <div id="error_explanation">
+          <h2>Errores en este formulario</h2>
+          <ul>
+            <% vigente.errors.each do |atributo, message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+  <% end %>
+
+  <br>
+  <div class="col-2 style="width: 243px;">
+    <%= f.text_field :dias, placeholder: "Dias de Vigencia", class: "form-control input-ml" %>
+    <br>
+    <%= f.submit :Actualizar, class: "btn-success form-control input-ml" %>
+  </div>
+
+<% end %>
+
+
+

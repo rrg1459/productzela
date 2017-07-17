@@ -1,0 +1,27 @@
+nue.html.erb<% content_for :titulo, "Entrada" %>
+
+<body class="pantalla_entrada"></body>
+<p class="notice"><%= notice %></p>
+<br>
+
+<h1><center>Iniciar Sesion</center></h1>
+
+<%= form_tag '/entrar' do %>
+	<diviv align="right" class="col-xs-6 ">
+		<select id="area" name="area" 	class="form-control input-lg" 	style="width: 105px;">
+			<optgroup label="Movilnet"><option value="0416">0416</option><option value="0426">0426</option></optgroup>
+			<optgroup label="Movistar"><option value="0414">0414</option><option value="0424">0424</option></optgroup>
+			<optgroup label="Digitel"> <option value="0412">0412</option></optgroup>
+		</select>
+	</div>
+   <input type="number" name="numero" class="form-control input-lg" placeholder="telefono" align="left" style="width: 120px;" min=999999 max=9999999 required><br>
+   <center>
+
+   <input type="password" name="contrasena" class="form-control input-lg" style="width: 240px;" placeholder="contrasena" required><br>
+   <button class="btn-lg btn-success btn-block" style="width: 240px;">Enviar</button>
+  </center>
+<% end %>
+
+
+
+<!--

@@ -1,0 +1,37 @@
+<% content_for :titulo, "Listado Productos" %>
+
+<body class="pantalla_pared"></body>
+
+<center>
+<h1>Productos</h1>
+</center>
+
+<table style="width:80%" >
+  <thead>
+    <tr>
+      <th><h3>&nbsp;&nbsp;&nbsp;&nbspNombre</h3></th>
+      <th><h3>Descripcion</h3></th>
+      <th style="text-align: center" ><h3>Existencias</h3></th>
+      <th style="text-align: right" ><h3>Precio</h3></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @productos.each do |producto| %>
+      <tr>
+          <td><h4>&nbsp;&nbsp;&nbsp;&nbsp<%= producto.nombre %></h4></td>
+          <td><h4><%= producto.descripcion %></h4></td>
+          <td style="text-align: center" ><h4><%= producto.cantidad_existencia %></h4></td>
+          <td style="text-align: right" ><h4><%= number_to_currency(producto.precio, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h4></td>
+          <td style="text-align: center" ><%= button_to 'Mostrar', producto, :class => "btn-sm btn-info", method: :get %></td>
+          <td style="text-align: center" ><%= button_to 'Editar', edit_producto_path(producto), :class => "btn-sm btn-warning", method: :get %></td>
+          <td style="text-align: center" ><%= button_to 'Borrar', producto, :class => "btn-sm btn-danger", method: :delete, data: { confirm: "Esta usted seguro que quiere borrar este producto???" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>&nbsp;&nbsp;&nbsp;&nbsp
+<%= link_to 'Nuevo Producto', new_producto_path %>
+</h3>

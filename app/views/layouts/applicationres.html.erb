@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title><%=  "Bazar · #{yield(:titulo)}" %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if session[:celular_usuario] %>
+        <%= navbar fixed: :top do %>
+          <%= navbar_header brand: 'ProducZela', brand_link: '/' %>
+          <%= navbar_collapse do %>
+            <%= navbar_group class: 'foo', id: 'menu' do %>
+              <%= navbar_dropdown "Compras" do %>
+                  <%= navbar_item "Iniciar Compra", new_compra_path %>
+                  <%= navbar_item "Ver Compras", listado_compras_pendientes_path %>
+                  <%= navbar_item "Ver Carrito", carritos_path %>
+                  <%= navbar_item "Ver Productos", mostrar_path %>
+              <% end %>
+            <% end %>
+
+
+            <%= form_tag(mostrar_path, method: 'get', class: 'navbar-form navbar-left') do %>
+               <!%= search_field_tag :criterio, params[:criterio], class: 'form-control', placeholder: 'Buscar productos'  %>
+               <%= search_field_tag '$crit', $crit, class: 'form-control', placeholder: 'Buscar productos'  %>
+               <!% $crit = params[:criterio] %>
+               <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                 <span class="glyphicon glyphicon-search"></span>
+               <% end %>
+            <% end %>
+<!--
+            <form action=mostrar class="navbar-form navbar-left"  role="search">
+              <div class="input-group">
+                <input type="text" name="criterio" class="form-control" placeholder="Buscar">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                     <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+-->
+
+            <%= navbar_group align: 'right' do %>
+                <%= link_to carritos_path do %>
+                  <carrito>
+                  <h4 class="car">
+                   <% if @cantidad == 1 %>
+                      &nbsp;<%= " #{@cantidad} articulo" %>
+                   <% else %>
+                      &nbsp;<%= " #{@cantidad} articulos" %>
+                   <% end %>
+                  </h4>
+                  </carrito>
+                <% end %>    
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= navbar fixed: :bottom, inverse: :inner do %>
+          <%= navbar_collapse do %>
+            <%= navbar_group class: 'foo1', id: 'menu1' do %>
+                <% if session[:rol_usuario] == 'admin' %>
+                  <%= navbar_item "Manual de Administrador", en_desarrollo_url  %>
+                  <%= navbar_dropdown "Procesos Administrativos" do %>
+                     <strong><%= navbar_dropdown_header 'Compras:' %></strong>
+                     <%= navbar_item "por Verificar", listado_compras_por_verificar_url %>
+                     <%= navbar_item "para Entregar", listado_compras_para_entregar_url %>
+                     <%= navbar_item "Entregadas", listado_compras_entregadas_url %>
+                     <%= navbar_dropdown_divider %>
+                     <strong><%= navbar_dropdown_header 'Mantenimineto a:' %></strong>
+                     <%= navbar_item "Usuarios", '/usuarios' %>
+                     <%= navbar_item "Bancos", '/bancos' %>
+                     <%= navbar_item "Productos", '/productos' %>
+                     <%= navbar_dropdown_divider %>
+                     <strong><%= navbar_dropdown_header 'Varios:' %></strong>
+                     <%= navbar_item "Vigencia de Carritos", '/vigentes' %>
+                     <%= navbar_item "Listado de Administradores", index_admin_url %>
+                     <%= navbar_item "Listado de todas las Compras", listado_todas_las_compras_url %>
+                     <%= navbar_item "Listado de todos los Carritos", listado_todos_los_carritos_url %>
+                   <% end %>
+                <% else %>
+                   <%= navbar_item "Manual de Usuario", en_desarrollo_url  %>
+                <% end %>
+                <%= navbar_item "Entrada", '/entrar' %>
+            <% end %>
+            <%= navbar_group align: 'right' do %>
+                <% nombre = usuario_actual.nombre.split(" ") %>
+                <%= navbar_item "#{nombre[0]}", "/usuarios/#{(session[:celular_usuario])}" %>
+                <%= link_to cerrar_url do %>
+                    <button class="btn btn-info navbar-btn">Cerrar</button>
+                <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% else %>
+      <h4>
+      <div align="right">
+        <% if usuario_actual %>
+          <% nombre = usuario_actual.nombre.split(" ") %>
+          <strong><%= link_to "#{nombre[0]}", Usuario.find(session[:celular_usuario]) %></strong> | <%= link_to "Cerrar sesion", '/cerrar' %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+          <%= '(' %><strong><%= link_to "#{@cantidad}", carritos_path %></strong><%= ')' %> <%= 'articulos en tu carrito' %>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <% else %>
+          <% if params[:action] == "new" %>
+               <%= link_to entrar_url do %>
+                  <span class="glyphicon glyphicon-log-in"></span> Entrar
+               <% end %>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <% else %>
+               <%= link_to new_usuario_path do %>
+                   <span class="glyphicon glyphicon-user"></span> Nuevo Usuario
+               <% end %>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <% end %>
+        <% end %>
+      </div>
+      </h4>
+    <% end %>
+    </head>
+  <body>
+  <br><br>
+    <h3><class="notice"><%= notice %></p></h3>
+    <%= yield %>
+    <br><br><br>
+  </body>
+</html>
+
+
+
+

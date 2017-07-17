@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  abierto: false
+  celular: MyString
+  producto_id: 1
+  compra_id: 1
+  cantidad: 1
+  precio: 1.5
+  f_creado: 2017-05-31
+  f_anulado: 2017-05-31
+  f_eliminado: 2017-05-31
+
+two:
+  abierto: false
+  celular: MyString
+  producto_id: 1
+  compra_id: 1
+  cantidad: 1
+  precio: 1.5
+  f_creado: 2017-05-31
+  f_anulado: 2017-05-31
+  f_eliminado: 2017-05-31

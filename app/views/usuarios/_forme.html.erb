@@ -1,0 +1,60 @@
+<%= form_for(usuario) do |f| %>
+  <% if usuario.errors.any? %>
+        <div id="error_explanation">
+          <h2>Errores en este formulario</h2>
+          <ul>
+            <% usuario.errors.each do |atributo, message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+  <% end %>
+
+
+  <div>
+  <h4>
+    <strong>Celular:</strong>
+
+    <%= "(#{params[:area]})#{params[:numero][0,3]}-#{params[:numero][3,7]}" %>
+  </h4>
+  </div>
+
+  
+
+  <br>
+  
+  <div style="width: 243px;">
+    <%= f.label "Nombre" %>
+    <%= f.text_field :nombre, placeholder: "Nombre", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.label "Contrasena" %>
+    <%= f.text_field :contrasena, placeholder: "Contrasena", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.label "Ubicacion" %>
+    <%= f.text_field :ubicacion, placeholder: "Ubicacion", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.label "Correo" %>
+    <%= f.text_field :correo, placeholder: "Correo", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.label "Gerencia" %>
+    <%= f.text_field :gerencia, placeholder: "Gerencia", class: "form-control input-ml" %>
+  </div>
+  <br>
+  <div style="width: 243px;">
+    <%= f.label "Telefono Local" %>
+    <%= f.text_field :telefono, placeholder: "Telefono local", class: "form-control input-ml" %>
+  </div>
+  <br><br>
+  <div style="width: 243px;">
+    <%= f.submit :Guardar, class: "btn-success form-control input-ml" %>
+  </div>
+  <br>
+<% end %>

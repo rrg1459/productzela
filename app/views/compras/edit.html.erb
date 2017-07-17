@@ -1,0 +1,55 @@
+<% content_for :titulo, "Iniciar Compra" %>
+
+<!body class="pantalla_construccion"></body>
+
+<center>
+<h2>Proceso Inicial de Compras</h2>
+</center>
+
+<table>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Nombre:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.nombre %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Numero Cuenta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.numero_cuenta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo de cuenta:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.tipo_cuenta %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Titular:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.titular %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cedula:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.cedula %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Correo:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<%= @banco.correo %></h4></td>
+  </tr>
+  <tr>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cantidad de Articulos:</strong></h4></td>
+    <td><h4>&nbsp;&nbsp;&nbsp;&nbsp;<strong><%= @cantidad %></strong></h4></td>
+  </tr>
+  <tr>
+    <td><h3>&nbsp;&nbsp;&nbsp;&nbsp;Total a pagar:</h3></td>
+    <td><h2>&nbsp;&nbsp;&nbsp;&nbsp;<%= number_to_currency(@total_carrito, {:precision => 0, :unit => "Bs ", :delimiter => "."}) %></h2></td>
+  </tr>
+</table>
+<br>
+<table>
+  <tbody>
+      <tr>
+      	<td>&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        <td><%= button_to 'Cambiar de Banco', new_compra_path, :class => "btn-sm btn-warning", method: :get %></td>
+		    <td>&nbsp;&nbsp;&nbsp;&nbsp; </td>
+        <td><%= button_to 'Cancelar Compra', cancelar_sin_ID_path, :class => "btn-sm btn-danger", method: :post, data: { confirm: "Esta usted seguro que quiere cancelar esta compra???" } %></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp; </td>
+	    	<td><%= button_to 'Registrar Compra', registrar_path(@banco), :class => "btn-sm btn-primary", method: :post %></td>
+      </tr>
+  </tbody>
+</table>

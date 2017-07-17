@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  celular: MyString
+  contrasena: MyString
+  rol: MyString
+  nombre: MyString
+  ubicacion: MyString
+  correo: MyString
+  gerencia: MyString
+  telefono: MyString
+  fh_sesion: 2017-05-14 07:26:24
+  f_creado: 2017-05-14
+  f_actualizado: 2017-05-14
+
+two:
+  celular: MyString
+  contrasena: MyString
+  rol: MyString
+  nombre: MyString
+  ubicacion: MyString
+  correo: MyString
+  gerencia: MyString
+  telefono: MyString
+  fh_sesion: 2017-05-14 07:26:24
+  f_creado: 2017-05-14
+  f_actualizado: 2017-05-14
