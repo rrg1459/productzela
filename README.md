@@ -19,9 +19,19 @@ C:\Sites\app1>
 * Configuration
 
 * Database creation
-sqlite3
+pg
 
 * Database initialization
+***                  ***
+*** para crear la BD ***
+***                  ***
+rails db:migrate
+
+***                                                                         ***
+*** para poblar la BD correctamente y ejecutar la aplicacion la primera vez ***
+***                                                                         ***
+rails db:seed
+
 
 * How to run the test suite
 
