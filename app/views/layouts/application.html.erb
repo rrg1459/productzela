@@ -20,32 +20,18 @@
             <% end %>
             <%= form_tag(mostrar_path, method: 'get', class: 'navbar-form navbar-left') do %>
                <%= search_field_tag :criterio, params[:criterio], class: 'form-control', placeholder: 'Buscar productos'  %>
-               <!% $crit = params[:criterio] %>
                <%= button_tag(type: "submit", class: "btn btn-default") do %>
                  <span class="glyphicon glyphicon-search"></span>
                <% end %>
             <% end %>
-<!--
-            <form action=mostrar class="navbar-form navbar-left"  role="search">
-              <div class="input-group">
-                <input type="text" name="criterio" class="form-control" placeholder="Buscar">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit">
-                     <span class="glyphicon glyphicon-search"></span>
-                  </button>
-                </div>
-              </div>
-            </form>
--->
-
             <%= navbar_group align: 'right' do %>
                 <%= link_to carritos_path do %>
                   <h4>
-                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                   <% if @cantidad == 1 %>
-                      <%= "#{@cantidad} articulo" %>
+                   <%= "#{@cantidad}" %>
+                   <% if @cantidad == 0 %>
+                        <span class="carrito-vacio"></span>
                    <% else %>
-                      <%= "#{@cantidad} articulos" %>
+                        <span class="carrito-lleno"></span>
                    <% end %>
                   </h4>
                 <% end %>    
@@ -91,29 +77,21 @@
     <% else %>
       <h4>
       <div align="right">
-        <% if usuario_actual %>
-          <% nombre = usuario_actual.nombre.split(" ") %>
-          <strong><%= link_to "#{nombre[0]}", Usuario.find(session[:celular_usuario]) %></strong> | <%= link_to "Cerrar sesion", '/cerrar' %>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-          <%= '(' %><strong><%= link_to "#{@cantidad}", carritos_path %></strong><%= ')' %> <%= 'articulos en tu carrito' %>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <% if params[:action] == "new" %>
+             <%= link_to entrar_url do %>
+                <span class="login"></span>Entrar
+             <% end %>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% else %>
-          <% if params[:action] == "new" %>
-               <%= link_to entrar_url do %>
-                  <span class="glyphicon glyphicon-log-in"></span> Entrar
-               <% end %>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <% else %>
-               <%= link_to new_usuario_path do %>
-                   <span class="glyphicon glyphicon-user"></span> Nuevo Usuario
-               <% end %>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <% end %>
+             <%= link_to new_usuario_path do %>
+                 Nuevo<span class="usuario"></span>
+             <% end %>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% end %>
       </div>
       </h4>
     <% end %>
-    </head>
+  </head>
   <body>
   <br><br>
     <h3><class="notice"><%= notice %></p></h3>

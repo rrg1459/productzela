@@ -28,12 +28,18 @@ th .desc {
   background-image: url(asset-path('down.png')); 
 }
 
-carrito {
+ .carrito-vacio:before { 
+    content: url(asset-path('carrito-32-vacio-rojo.png'));
 }
 
-.car { 
-  background-repeat: no-repeat;
-  background-size:auto;
-  background-position: left;
-  background-image: url(asset-path('carrito.png')); 
+ .carrito-lleno:before {
+    content: url(asset-path('carrito-32-lleno-rojo'));
+}
+ 
+ .login:before {
+    content: url(asset-path('login'));
+}
+
+ .usuario:after {
+    content: url(asset-path('usuario'));
 }
